@@ -24,6 +24,7 @@ const Trecks = () => {
       {piste.map((track) => (
         <div key={track.id}>
           <h1>{track.slug}</h1>
+          <h1>{track?.zona}</h1>
         </div>
       ))}
     </div>
