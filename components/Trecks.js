@@ -6,6 +6,8 @@ import React, { useEffect, useState } from "react";
 const Trecks = () => {
   const [piste, setPiste] = useState([]);
 
+  const stati = ["OK","KO", "Warn"]
+
   useEffect(() => {
     const fetchTracks = async () => {
       const tracksCollection = collection(db, "tracks");
@@ -48,7 +50,7 @@ const Trecks = () => {
           <Link href={`/zone/${track.zona.slug}`}>
             <span>{track.zona.nome}</span>
           </Link>
-          <span>{track.stato}</span>
+          <span>{stati[track.stato]}</span>
         </div>
       ))}
     </div>
