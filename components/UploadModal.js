@@ -14,6 +14,7 @@ import {
 import { db, storage } from "../firebase";
 import { useSession } from "next-auth/react";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import Image from "next/image";
 
 export default function UploadModal() {
   const [open, setOpen] = useRecoilState(modalState);
@@ -78,11 +79,13 @@ export default function UploadModal() {
         >
           <div className="flex flex-col justify-center items-center h-[100%]">
             {selectedFile ? (
-              <img
+              <Image
                 onClick={() => setSelectedFile(null)}
                 src={selectedFile}
                 alt=""
                 className="w-full max-h-[250px] object-cover cursor-pointer"
+                width="100"
+                height="100"
               />
             ) : (
               <CameraIcon

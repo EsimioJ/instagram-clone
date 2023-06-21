@@ -1,5 +1,6 @@
 import minifaker from "minifaker";
 import "minifaker/locales/en";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Suggestions() {
@@ -23,12 +24,14 @@ export default function Suggestions() {
           key={suggestion.id}
           className="flex items-center justify-between mt-3"
         >
-          <img
+          <Image
             className="h-10 rounded-full border p-[2px]"
             src={`https://i.pravatar.cc/150?img=${Math.ceil(
               Math.random() * 70
             )}`}
             alt=""
+            width="100"
+                height="100"
           />
           <div className="flex-1 ml-4">
             <h2 className="font-semibold text-sm">{suggestion.username}</h2>

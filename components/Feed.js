@@ -3,6 +3,7 @@ import MiniProfile from "./MIniProfile";
 import Stories from "./Stories";
 import Suggestions from "./Suggestions";
 import { useSession } from "next-auth/react";
+import Tracks from "./Tracks";
 
 export default function Feed() {
   const { data: session } = useSession();
@@ -18,7 +19,11 @@ export default function Feed() {
         {/* Stories */}
         <Stories />
 
-        {/* Posts */}
+        {/* Stories */}
+        <Tracks />
+
+        {/* Posts
+        manca la key - correggere e riattivare sotto */}
         <Posts />
       </section>
 

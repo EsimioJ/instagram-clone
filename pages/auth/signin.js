@@ -1,22 +1,27 @@
 import { getProviders, signIn } from "next-auth/react";
 import Header from "../../components/Header";
+import Image from "next/image";
 export default function signin({ providers }) {
   return (
     <>
       <Header />
       <div className="flex justify-center space-x-7 mt-20">
-        <img
+        <Image
           className="hidden object-cover rotate-6 md:inline-flex md:w-48"
-          src="https://superviral.com.au/wp-content/uploads/2021/08/instagix-banner-graphic.png"
+          src="https://cornoallescalebike.net/wp-content/uploads/2021/06/cornoAlleScaleBike_logo.png"
           alt="instagram-image"
+          width="100"
+                height="100"
         />
         <div className="">
           {Object.values(providers).map((provider) => (
             <div key={provider.name} className="flex flex-col items-center">
-              <img
+              <Image
                 className="w-32 object-cover"
-                src="https://socodigital.com/wp-content/uploads/2021/03/Instagram.png"
+                src="https://cornoallescalebike.net/wp-content/uploads/2021/06/cornoAlleScaleBike_logo.png"
                 alt=""
+                width="100"
+                height="100"
               />
               <p className="text-sm italic my-10 text-center">
                 This app is created for learning purposes

@@ -3,12 +3,12 @@ import { SearchIcon, PlusCircleIcon, HomeIcon } from "@heroicons/react/outline";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atom/modalAtom";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
 
 export default function Header() {
   const router = useRouter();
   const { data: session } = useSession();
-   const [open, setOpen] = useRecoilState(modalState);
+  const [open, setOpen] = useRecoilState(modalState);
   return (
     <div className="shadow-sm border-b sticky top-0 bg-white z-30">
       <div className="flex items-center justify-between max-w-6xl mx-4 xl:mx-auto">
@@ -16,18 +16,24 @@ export default function Header() {
 
         <div className="cursor-pointer h-24 w-24 relative hidden lg:inline-grid">
           <Image
-            src="http://www.jennexplores.com/wp-content/uploads/2015/09/Instagram_logo_black.png"
-            layout="fill"
+            src="https://cornoallescalebike.net/wp-content/uploads/2021/06/cornoAlleScaleBike_logo.png"
+            //layout="fill"
             className="object-contain"
             onClick={() => router.push("/")}
+            width="100"
+            height="100"
+            alt=""
           />
         </div>
         <div className="cursor-pointer h-24 w-10 relative  lg:hidden">
           <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/800px-Instagram_logo_2016.svg.png"
-            layout="fill"
+            src="https://cornoallescalebike.net/wp-content/uploads/2021/06/cornoAlleScaleBike_logo.png"
+            //layout="fill"
             className="object-contain"
             onClick={() => router.push("/")}
+            alt="cornogram"
+            width="100"
+            height="100"
           />
         </div>
 
@@ -45,23 +51,24 @@ export default function Header() {
         </div>
 
         <div className="flex space-x-4 items-center">
-         <HomeIcon
+          <HomeIcon
             onClick={() => router.push("/")}
             className="hidden md:inline-flex  h-6 cursor-pointer hover:scale-125 transition-tranform duration-200 ease-out"
           />
 
           {session ? (
             <>
-             
               <PlusCircleIcon
-                onClick={() => setOpen(true)}
+                //onClick={() => setOpen(true)}
                 className="h-6 cursor-pointer hover:scale-125 transition-tranform duration-200 ease-out"
               />
-              <img
+              <Image
                 onClick={signOut}
                 src={session.user.image}
                 alt="user-image"
                 className="h-10 rounded-full cursor-pointer"
+                width="100"
+                height="100"
               />
             </>
           ) : (

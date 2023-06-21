@@ -21,6 +21,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 export default function Post({ img, userImg, caption, username, id }) {
   const { data: session } = useSession();
   const [comment, setComment] = useState("");
@@ -70,19 +71,21 @@ export default function Post({ img, userImg, caption, username, id }) {
     });
   }
   return (
-    <div className="bg-white my-7 border rounded-md">
+    <div className="bg-white my-7 border rounded-md" key={id}>
       {/* Post Header */}
       <div className="flex items-center p-5">
-        <img
+        <Image
           className="h-12 rounded-full object-cover border p-1 mr-3"
           src={userImg}
           alt={username}
+          width="100"
+          height="100"
         />
         <p className="font-bold flex-1">{username}</p>
         <DotsHorizontalIcon className="h-5" />
       </div>
       {/* Post Image */}
-      <img className="object-cover w-full" src={img} alt="" />
+      <Image className="object-cover w-full" src={img} alt="" width="100" height="100" />
       {/* Post Buttons  */}
       {session && (
         <div className="flex justify-between px-4 pt-4">
@@ -112,10 +115,12 @@ export default function Post({ img, userImg, caption, username, id }) {
               key={comment.data().id}
               className="flex items-center space-x-2 mb-2"
             >
-              <img
+              <Image
                 className="h-7  rounded-full object-cover"
                 src={comment.data().userImage}
                 alt="user-image"
+                width="100"
+                height="100"
               />
               <p className="font-semibold">{comment.data().username}</p>
               <p className="flex-1 truncate">{comment.data().comment}</p>
