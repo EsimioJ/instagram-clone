@@ -3,7 +3,76 @@
 @tailwind utilities;
 
 @layer components {
-    .btn {
-        @apply h-7 hover:scale-125 transition-transform duration-200 ease-out cursor-pointer
-    }
+  .btn {
+    @apply h-7 hover:scale-125 transition-transform duration-200 ease-out cursor-pointer;
+  }
 }
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  /* ... */
+}
+
+@layer components {
+  .zona {
+    @apply max-w-[100%] px-4 block truncate;
+  }
+  .OK {
+    @apply bg-green-500;
+  }
+  .KO {
+    @apply bg-red-500;
+  }
+  .Warn {
+    @apply bg-orange-500;
+  }
+  .silla {
+    @apply bg-[#059dd9];
+  }
+  .segavecchia {
+    @apply bg-[#4f4898];
+  }
+  .corno {
+    @apply bg-[#6db52e];
+  }
+  .riori {
+    @apply bg-[#ce2e88];
+  }
+  .montepizzo {
+    @apply bg-[#e5e009];
+  }
+  .montegrande {
+    @apply bg-[#ea571c];
+  }
+  .castellina {
+    @apply bg-[#e3071a];
+  }
+}
+
+.silla {
+  background: #059dd9;
+}
+.segavecchia {
+  background: #4f4898;
+}
+.corno {
+  background: #6db52e;
+}
+.riori {
+  background: #ce2e88;
+}
+.montepizzo {
+  background: #e5e009;
+}
+.montegrande {
+  background: #ea571c;
+}
+.castellina {
+  background: #e3071a;
+}
+

@@ -3,7 +3,8 @@ import { collection, getDocs, getDoc } from "firebase/firestore";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const Trecks = () => {
+const Trecks = (zona) => {
+  console.log("ZONA",zona);
   const [piste, setPiste] = useState([]);
 
   const stati = ["OK","KO", "Warn"]
@@ -33,24 +34,24 @@ const Trecks = () => {
     fetchTracks();
   }, []);
 
-  console.log(piste);
+  //console.log(piste);
 
   return (
-    <div>
-        <div className="grid grid-cols-3 gap-4 font-bold">
+    <div className="w-full bg-gray-200 p-4  text-center">
+        <div className="grid grid-cols-3 text-lg gap-4 font-extrabold items-center">
             <span>Tracciati</span>
-            <span>Zone</span>
+            <span><Link href={"/zone"}>Zone</Link></span>
             <span>Stato</span>
         </div>
       {piste.map((track) => (
         <div key={track.id} className="grid grid-cols-3 gap-4">
-          <Link href={`/tracks/${track.slug}`}>
-            <span>{track.num}</span> -<span> {track.title}</span>
+          <Link href={`/tracks/${track.slug}` } className="text-left">
+            <span>{track.num}</span> -<span className="font-bold"> {track.title}</span>
           </Link>
           <Link href={`/zone/${track.zona.slug}`}>
-            <span>{track.zona.nome}</span>
+            <span className={`zona ${track.zona.slug}` }>{track.zona.nome}</span>
           </Link>
-          <span>{stati[track.stato]}</span>
+          <span className={`${stati[track.stato]}`}>{stati[track.stato]}</span>
         </div>
       ))}
     </div>

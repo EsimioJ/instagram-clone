@@ -4,6 +4,7 @@ import Stories from "./Stories";
 import Suggestions from "./Suggestions";
 import { useSession } from "next-auth/react";
 import Tracks from "./Tracks";
+import Trecks from "./Trecks";
 
 export default function Feed() {
   const { data: session } = useSession();
@@ -16,11 +17,14 @@ export default function Feed() {
       }  `}
     >
       <section className="md:col-span-2">
+
+        {/* Map */}
+        {/* <Map /> */}
+
+        {/* Trecks */}
+        <Trecks zona="tutte"/>
         {/* Stories */}
         <Stories />
-
-        {/* Stories */}
-        <Tracks />
 
         {/* Posts
         manca la key - correggere e riattivare sotto */}

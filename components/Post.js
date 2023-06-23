@@ -71,7 +71,7 @@ export default function Post({ img, userImg, caption, username, id }) {
     });
   }
   return (
-    <div className="bg-white my-7 border rounded-md" key={id}>
+    <div className={`bg-white my-7 border rounded-md ${id}`} key={id}>
       {/* Post Header */}
       <div className="flex items-center p-5">
         <Image
@@ -85,7 +85,13 @@ export default function Post({ img, userImg, caption, username, id }) {
         <DotsHorizontalIcon className="h-5" />
       </div>
       {/* Post Image */}
-      <Image className="object-cover w-full" src={img} alt="" width="100" height="100" />
+      <Image
+        className="object-cover w-full"
+        src={img}
+        alt=""
+        width="100"
+        height="100"
+      />
       {/* Post Buttons  */}
       {session && (
         <div className="flex justify-between px-4 pt-4">
@@ -112,8 +118,8 @@ export default function Post({ img, userImg, caption, username, id }) {
         <div className="mx-10 max-h-24 overflow-y-scroll scrollbar-none">
           {comments.map((comment) => (
             <div
-              key={comment.data().id}
-              className="flex items-center space-x-2 mb-2"
+              key={comment.id}
+              className={`flex items-center space-x-2 mb-2 ${comment.id}`}
             >
               <Image
                 className="h-7  rounded-full object-cover"

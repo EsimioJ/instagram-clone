@@ -59,7 +59,7 @@ export default function Header() {
           {session ? (
             <>
               <PlusCircleIcon
-                //onClick={() => setOpen(true)}
+                onClick={() => setOpen(true)}
                 className="h-6 cursor-pointer hover:scale-125 transition-tranform duration-200 ease-out"
               />
               <Image

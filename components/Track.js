@@ -28,48 +28,49 @@ export default function Track({ img, trackImg, caption, trackname, id }) {
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
-  useEffect(() => {
-    const unsubscribe = onSnapshot(
-      query(
-        collection(db, "tracks", id, "comments"),
-        orderBy("timestamp", "desc")
-      ),
-      (snapshot) => {
-        setComments(snapshot.docs);
-      }
-    );
-  }, [db, id]);
-  useEffect(() => {
-    const unsubscribe = onSnapshot(
-      collection(db, "tracks", id, "likes"),
-      (snapshot) => setLikes(snapshot.docs)
-    );
-  }, [db]);
-  useEffect(() => {
-    setHasLiked(
-      likes.findIndex((like) => like.id === session?.track.uid) !== -1
-    );
-  }, [likes]);
-  async function likeTrack() {
-    if (hasLiked) {
-      await deleteDoc(doc(db, "tracks", id, "likes", session.track.uid));
-    } else {
-      await setDoc(doc(db, "tracks", id, "likes", session.track.uid), {
-        trackname: session.track.trackname,
-      });
-    }
-  }
-  async function sendComment(event) {
-    event.preventDefault();
-    const commentToSend = comment;
-    setComment("");
-    await addDoc(collection(db, "tracks", id, "comments"), {
-      comment: commentToSend,
-      trackname: session.track.trackname,
-      trackImage: session.track.image,
-      timestamp: serverTimestamp(),
-    });
-  }
+
+  // useEffect(() => {
+  //   const unsubscribe = onSnapshot(
+  //     query(
+  //       collection(db, "tracks", id, "comments"),
+  //       orderBy("timestamp", "desc")
+  //     ),
+  //     (snapshot) => {
+  //       setComments(snapshot.docs);
+  //     }
+  //   );
+  // }, [db, id]);
+  // useEffect(() => {
+  //   const unsubscribe = onSnapshot(
+  //     collection(db, "tracks", id, "likes"),
+  //     (snapshot) => setLikes(snapshot.docs)
+  //   );
+  // }, [db]);
+  // useEffect(() => {
+  //   setHasLiked(
+  //     likes.findIndex((like) => like.id === session?.track.uid) !== -1
+  //   );
+  // }, [likes]);
+  // async function likeTrack() {
+  //   if (hasLiked) {
+  //     await deleteDoc(doc(db, "tracks", id, "likes", session.track.uid));
+  //   } else {
+  //     await setDoc(doc(db, "tracks", id, "likes", session.track.uid), {
+  //       trackname: session.track.trackname,
+  //     });
+  //   }
+  // }
+  // async function sendComment(event) {
+  //   event.preventDefault();
+  //   const commentToSend = comment;
+  //   setComment("");
+  //   await addDoc(collection(db, "tracks", id, "comments"), {
+  //     comment: commentToSend,
+  //     trackname: session.track.trackname,
+  //     trackImage: session.track.image,
+  //     timestamp: serverTimestamp(),
+  //   });
+  // }
   return (
     <div className="bg-white my-7 border rounded-md">
       {/* track Header */}
