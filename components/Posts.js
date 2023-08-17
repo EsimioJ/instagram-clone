@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import Post from "./Post";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
+  //const [slug, setSlug] = useState("mezzasela")
+  const slug= "mezzasela"
 
   useEffect(() => {
+    console.log(slug)
     const unsubscribe = onSnapshot(
-      query(collection(db, "posts"), orderBy("timestamp", "desc")),
+      query(
+        collection(db, "posts"),
+        //where("track_id", "==", "cuplina"),
+        orderBy("timestamp", "desc")
+      ),
       (snapshot) => {
         setPosts(snapshot.docs);
       }

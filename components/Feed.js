@@ -26,8 +26,7 @@ export default function Feed() {
         {/* Stories */}
         <Stories />
 
-        {/* Posts
-        manca la key - correggere e riattivare sotto */}
+        {/* Posts */}
         <Posts />
       </section>
 
